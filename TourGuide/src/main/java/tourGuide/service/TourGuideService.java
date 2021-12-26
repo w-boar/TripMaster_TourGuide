@@ -87,26 +87,8 @@ public class TourGuideService {
     }
 
     public List<String> getNearByAttractions(VisitedLocation visitedLocation, User user) {
-        RewardCentral rewardCentral = new RewardCentral();
-        List<String> nearbyAttractions = new ArrayList<>();
-        TreeMap<Double, Attraction> attractionsMap = new TreeMap<>();
-        for (Attraction attraction : gpsUtil.getAttractions()) {
-            attractionsMap.put(rewardsService.getDistance(visitedLocation.location, attraction), attraction);
-//			if(rewardsService.isWithinAttractionProximity(attraction, visitedLocation.location)) {
-//				nearbyAttractions.add(attraction);
-//			}
-        }
-        Set<Double> keys = attractionsMap.keySet();
-        int i = 0;
-        for (double key : keys) {
-            if (i < 5) {
-                Attraction attraction = attractionsMap.get(key);
-                NearbyAttraction nearbyAttraction = new NearbyAttraction(attraction.latitude, attraction.longitude, attraction, user, visitedLocation, rewardsService, rewardCentral);
-                nearbyAttractions.add(nearbyAttraction.toString());
-                i++;
-            }
-        }
-        return nearbyAttractions;
+        NearbyAttractionService nearbyAttractionService = new NearbyAttractionService(gpsUtil, rewardsService);
+        return nearbyAttractionService.getNearByAttractions(visitedLocation, user);
     }
 
     private void addShutDownHook() {
