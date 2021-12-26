@@ -5,7 +5,6 @@ import gpsUtil.location.Location;
 import gpsUtil.location.VisitedLocation;
 import rewardCentral.RewardCentral;
 import tourGuide.service.RewardsService;
-import tourGuide.user.User;
 
 public class NearbyAttraction extends Location {
     private Attraction attraction;
@@ -15,24 +14,24 @@ public class NearbyAttraction extends Location {
     private RewardCentral rewardCentral;
 
     public NearbyAttraction(double latitude, double longitude, Attraction attraction, User user, VisitedLocation visitedLocation, RewardsService rewardsService, RewardCentral rewardCentral) {
-<span class="fc" id="L18">        super(latitude, longitude);</span>
-<span class="fc" id="L19">        this.attraction = attraction;</span>
-<span class="fc" id="L20">        this.user = user;</span>
-<span class="fc" id="L21">        this.visitedLocation= visitedLocation;</span>
-<span class="fc" id="L22">        this.rewardsService = rewardsService;</span>
-<span class="fc" id="L23">        this.rewardCentral = rewardCentral;</span>
-<span class="fc" id="L24">    }</span>
+<span class="fc" id="L17">        super(latitude, longitude);</span>
+<span class="fc" id="L18">        this.attraction = attraction;</span>
+<span class="fc" id="L19">        this.user = user;</span>
+<span class="fc" id="L20">        this.visitedLocation= visitedLocation;</span>
+<span class="fc" id="L21">        this.rewardsService = rewardsService;</span>
+<span class="fc" id="L22">        this.rewardCentral = rewardCentral;</span>
+<span class="fc" id="L23">    }</span>
 
     @Override
     public String toString() {
-<span class="fc" id="L28">        return &quot;NearbyAttraction{&quot; +</span>
+<span class="fc" id="L27">        return &quot;NearbyAttraction{&quot; +</span>
                 &quot;attractionName='&quot; + attraction.attractionName+ '\'' +
                 &quot;, latitude=&quot; + latitude +
                 &quot;, longitude=&quot; + longitude +
                 &quot;, user latitude=&quot; + visitedLocation.location.latitude+
                 &quot;, user longitude=&quot; + visitedLocation.location.longitude+
-<span class="fc" id="L34">                &quot;, distance=&quot; + rewardsService.getDistance(visitedLocation.location, attraction)+</span>
-<span class="fc" id="L35">                &quot; miles, reward points =&quot; + rewardCentral.getAttractionRewardPoints(attraction.attractionId, user.getUserId()) +</span>
+<span class="fc" id="L33">                &quot;, distance=&quot; + rewardsService.getDistance(visitedLocation.location, attraction)+</span>
+<span class="fc" id="L34">                &quot; miles, reward points =&quot; + rewardCentral.getAttractionRewardPoints(attraction.attractionId, user.getUserId()) +</span>
                 '}';
     }
 }
