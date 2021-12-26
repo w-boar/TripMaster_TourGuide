@@ -5,7 +5,6 @@ import gpsUtil.location.Location;
 import gpsUtil.location.VisitedLocation;
 import rewardCentral.RewardCentral;
 import tourGuide.service.RewardsService;
-import tourGuide.user.User;
 
 public class NearbyAttraction extends Location {
     private Attraction attraction;
