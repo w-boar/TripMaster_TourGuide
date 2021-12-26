@@ -11,15 +11,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import gpsUtil.GpsUtil;
-import gpsUtil.location.Attraction;
 import gpsUtil.location.Location;
 import gpsUtil.location.VisitedLocation;
-import rewardCentral.RewardCentral;
 import tourGuide.helper.InternalTestHelper;
-import tourGuide.model.NearbyAttraction;
 import tourGuide.tracker.Tracker;
-import tourGuide.user.User;
-import tourGuide.user.UserReward;
+import tourGuide.model.User;
+import tourGuide.model.UserReward;
 import tripPricer.Provider;
 import tripPricer.TripPricer;
 
@@ -86,10 +83,10 @@ public class TourGuideService {
         return visitedLocation;
     }
 
-    public List<String> getNearByAttractions(VisitedLocation visitedLocation, User user) {
-        NearbyAttractionService nearbyAttractionService = new NearbyAttractionService(gpsUtil, rewardsService);
-        return nearbyAttractionService.getNearByAttractions(visitedLocation, user);
-    }
+//    public List<String> getNearByAttractions(VisitedLocation visitedLocation, User user) {
+//        NearbyAttractionService nearbyAttractionService = new NearbyAttractionService(gpsUtil, rewardsService);
+//        return nearbyAttractionService.getNearByAttractions(visitedLocation, user);
+//    }
 
     private void addShutDownHook() {
         Runtime.getRuntime().addShutdownHook(new Thread() {

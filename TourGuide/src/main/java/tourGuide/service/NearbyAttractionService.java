@@ -6,7 +6,7 @@ import gpsUtil.location.VisitedLocation;
 import org.springframework.stereotype.Service;
 import rewardCentral.RewardCentral;
 import tourGuide.model.NearbyAttraction;
-import tourGuide.user.User;
+import tourGuide.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
