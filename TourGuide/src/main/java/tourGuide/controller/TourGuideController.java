@@ -69,11 +69,11 @@ public class TourGuideController {
     	return JsonStream.serialize("");
     }
     
-    @RequestMapping("/getTripDeals")
-    public String getTripDeals(@RequestParam String userName) {
-    	List<Provider> providers = tourGuideService.getTripDeals(getUser(userName));
-    	return JsonStream.serialize(providers);
-    }
+//    @RequestMapping("/getTripDeals")
+//    public String getTripDeals(@RequestParam String userName) {
+//    	List<Provider> providers = tourGuideService.getTripDeals(getUser(userName));
+//    	return JsonStream.serialize(providers);
+//    }
     
     private User getUser(String userName) {
     	return tourGuideService.getUser(userName);
