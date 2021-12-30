@@ -1,24 +1,22 @@
 package tourGuide.service;
 
+import gpsUtil.GpsUtil;
+import gpsUtil.location.Location;
+import gpsUtil.location.VisitedLocation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import tourGuide.helper.InternalTestHelper;
+import tourGuide.model.User;
+import tourGuide.model.UserReward;
+import tourGuide.tracker.Tracker;
+import tripPricer.TripPricer;
+
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-
-import gpsUtil.GpsUtil;
-import gpsUtil.location.Location;
-import gpsUtil.location.VisitedLocation;
-import tourGuide.helper.InternalTestHelper;
-import tourGuide.tracker.Tracker;
-import tourGuide.model.User;
-import tourGuide.model.UserReward;
-import tripPricer.Provider;
-import tripPricer.TripPricer;
 
 @Service
 public class TourGuideService {
@@ -70,7 +68,6 @@ public class TourGuideService {
 
 //    public List<Provider> getTripDeals(User user) {
 //        int cumulatativeRewardPoints = user.getUserRewards().stream().mapToInt(i -> i.getRewardPoints()).sum();
-//
 //        List<Provider> providers = tripPricer.getPrice(tripPricerApiKey, user.getUserId(), user.getUserPreferences().getNumberOfAdults(),
 //                user.getUserPreferences().getNumberOfChildren(), user.getUserPreferences().getTripDuration(), cumulatativeRewardPoints);
 //        user.setTripDeals(providers);
