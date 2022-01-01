@@ -1,18 +1,17 @@
 package tourGuide;
 
-import java.util.List;
-import java.util.UUID;
-
-import org.junit.Test;
-
 import gpsUtil.GpsUtil;
 import gpsUtil.location.VisitedLocation;
+import org.junit.Test;
 import rewardCentral.RewardCentral;
 import tourGuide.helper.InternalTestHelper;
+import tourGuide.model.User;
 import tourGuide.service.RewardsService;
 import tourGuide.service.TourGuideService;
-import tourGuide.model.User;
-import tripPricer.Provider;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 import static org.junit.Assert.*;
 
@@ -88,7 +87,27 @@ public class TestTourGuideService {
 		
 		assertEquals(user.getUserId(), visitedLocation.userId);
 	}
-	
+
+@Test
+	public void shouldGetAllCurrentLocations(){
+//		GIVEN
+	GpsUtil gpsUtil = new GpsUtil();
+	RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
+	InternalTestHelper.setInternalUserNumber(0);
+	TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService);
+
+//		WHEN
+	User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
+	VisitedLocation visitedLocation = tourGuideService.trackUserLocation(user);
+	tourGuideService.addUser(user);
+	List<String> expectedList = new ArrayList<String>();
+	expectedList.add(user.getUserId() + ": " + "{longitude: " + user.getLastVisitedLocation().location.longitude+", latitude: "+ user.getLastVisitedLocation().location.latitude + "}");
+	List<String> actualList = tourGuideService.getAllCurrentLocations();
+	tourGuideService.tracker.stopTracking();
+//		THEN
+	assertEquals(expectedList, actualList);
+}
+
 //	@Ignore // Not yet implemented
 //	@Test
 //	public void getNearbyAttractions() {
