@@ -60,6 +60,17 @@ public class TourGuideService {
         return internalUserMap.values().stream().collect(Collectors.toList());
     }
 
+    public List<String> getAllCurrentLocations(){
+        List<String> lastLocations = new ArrayList<String>();
+        List<User> users  = getAllUsers();
+        String lastLocation = "";
+        for (User user: users){
+            lastLocation = user.getUserId() + ": " + "{longitude: " + user.getLastVisitedLocation().location.longitude+", latitude: "+ user.getLastVisitedLocation().location.latitude + "}";
+            lastLocations.add(lastLocation);
+        }
+        return lastLocations;
+    }
+
     public void addUser(User user) {
         if (!internalUserMap.containsKey(user.getUserName())) {
             internalUserMap.put(user.getUserName(), user);
