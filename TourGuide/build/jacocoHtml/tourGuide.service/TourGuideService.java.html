@@ -42,7 +42,7 @@ public class TourGuideService {
 <span class="fc" id="L42">    }</span>
 
     public List&lt;UserReward&gt; getUserRewards(User user) {
-<span class="nc" id="L45">        return user.getUserRewards();</span>
+<span class="fc" id="L45">        return user.getUserRewards();</span>
     }
 
     public VisitedLocation getUserLocation(User user) {
@@ -116,38 +116,38 @@ public class TourGuideService {
 
     private void initializeInternalUsers() {
 <span class="fc" id="L118">        IntStream.range(0, InternalTestHelper.getInternalUserNumber()).forEach(i -&gt; {</span>
-<span class="nc" id="L119">            String userName = &quot;internalUser&quot; + i;</span>
-<span class="nc" id="L120">            String phone = &quot;000&quot;;</span>
-<span class="nc" id="L121">            String email = userName + &quot;@tourGuide.com&quot;;</span>
-<span class="nc" id="L122">            User user = new User(UUID.randomUUID(), userName, phone, email);</span>
-<span class="nc" id="L123">            generateUserLocationHistory(user);</span>
+<span class="fc" id="L119">            String userName = &quot;internalUser&quot; + i;</span>
+<span class="fc" id="L120">            String phone = &quot;000&quot;;</span>
+<span class="fc" id="L121">            String email = userName + &quot;@tourGuide.com&quot;;</span>
+<span class="fc" id="L122">            User user = new User(UUID.randomUUID(), userName, phone, email);</span>
+<span class="fc" id="L123">            generateUserLocationHistory(user);</span>
 
-<span class="nc" id="L125">            internalUserMap.put(userName, user);</span>
-<span class="nc" id="L126">        });</span>
+<span class="fc" id="L125">            internalUserMap.put(userName, user);</span>
+<span class="fc" id="L126">        });</span>
 <span class="fc" id="L127">        logger.debug(&quot;Created &quot; + InternalTestHelper.getInternalUserNumber() + &quot; internal test users.&quot;);</span>
 <span class="fc" id="L128">    }</span>
 
     private void generateUserLocationHistory(User user) {
-<span class="nc" id="L131">        IntStream.range(0, 3).forEach(i -&gt; {</span>
-<span class="nc" id="L132">            user.addToVisitedLocations(new VisitedLocation(user.getUserId(), new Location(generateRandomLatitude(), generateRandomLongitude()), getRandomTime()));</span>
-<span class="nc" id="L133">        });</span>
-<span class="nc" id="L134">    }</span>
+<span class="fc" id="L131">        IntStream.range(0, 3).forEach(i -&gt; {</span>
+<span class="fc" id="L132">            user.addToVisitedLocations(new VisitedLocation(user.getUserId(), new Location(generateRandomLatitude(), generateRandomLongitude()), getRandomTime()));</span>
+<span class="fc" id="L133">        });</span>
+<span class="fc" id="L134">    }</span>
 
     private double generateRandomLongitude() {
-<span class="nc" id="L137">        double leftLimit = -180;</span>
-<span class="nc" id="L138">        double rightLimit = 180;</span>
-<span class="nc" id="L139">        return leftLimit + new Random().nextDouble() * (rightLimit - leftLimit);</span>
+<span class="fc" id="L137">        double leftLimit = -180;</span>
+<span class="fc" id="L138">        double rightLimit = 180;</span>
+<span class="fc" id="L139">        return leftLimit + new Random().nextDouble() * (rightLimit - leftLimit);</span>
     }
 
     private double generateRandomLatitude() {
-<span class="nc" id="L143">        double leftLimit = -85.05112878;</span>
-<span class="nc" id="L144">        double rightLimit = 85.05112878;</span>
-<span class="nc" id="L145">        return leftLimit + new Random().nextDouble() * (rightLimit - leftLimit);</span>
+<span class="fc" id="L143">        double leftLimit = -85.05112878;</span>
+<span class="fc" id="L144">        double rightLimit = 85.05112878;</span>
+<span class="fc" id="L145">        return leftLimit + new Random().nextDouble() * (rightLimit - leftLimit);</span>
     }
 
     private Date getRandomTime() {
-<span class="nc" id="L149">        LocalDateTime localDateTime = LocalDateTime.now().minusDays(new Random().nextInt(30));</span>
-<span class="nc" id="L150">        return Date.from(localDateTime.toInstant(ZoneOffset.UTC));</span>
+<span class="fc" id="L149">        LocalDateTime localDateTime = LocalDateTime.now().minusDays(new Random().nextInt(30));</span>
+<span class="fc" id="L150">        return Date.from(localDateTime.toInstant(ZoneOffset.UTC));</span>
     }
 
 }
