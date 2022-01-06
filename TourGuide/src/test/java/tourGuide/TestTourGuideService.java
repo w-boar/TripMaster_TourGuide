@@ -72,7 +72,8 @@ public class TestTourGuideService {
 		assertTrue(allUsers.contains(user));
 		assertTrue(allUsers.contains(user2));
 	}
-	
+
+	// Tests the simple track user and uses it to test the multithread one
 	@Test
 	public void trackUser() {
 		GpsUtil gpsUtil = new GpsUtil();
@@ -82,10 +83,14 @@ public class TestTourGuideService {
 		
 		User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
 		VisitedLocation visitedLocation = (VisitedLocation) tourGuideService.trackUserLocation(user);
-		
+		List<User> users = new ArrayList<User>();
+		users.add(user);
+		tourGuideService.trackUserLocationMultiThread(users);
 		tourGuideService.tracker.stopTracking();
 
-		assertEquals(user.getUserId(), visitedLocation.userId);
+		assertEquals(user.getUserId(), visitedLocation.userId);// simpleTrackUser test
+//		assertEquals(visitedLocation.timeVisited, user.getLastVisitedLocation().timeVisited);
+		assertNotEquals(visitedLocation.timeVisited, user.getLastVisitedLocation().timeVisited);// multithreadTrackUser test
 	}
 
 @Test
