@@ -15,6 +15,7 @@ import tripPricer.TripPricer;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
+import java.util.concurrent.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -26,6 +27,7 @@ public class TourGuideService {
     private final TripPricer tripPricer = new TripPricer();
     public final Tracker tracker;
     boolean testMode = true;
+
 
     public TourGuideService(GpsUtil gpsUtil, RewardsService rewardsService) {
         this.gpsUtil = gpsUtil;
@@ -60,12 +62,12 @@ public class TourGuideService {
         return internalUserMap.values().stream().collect(Collectors.toList());
     }
 
-    public List<String> getAllCurrentLocations(){
+    public List<String> getAllCurrentLocations() {
         List<String> lastLocations = new ArrayList<String>();
-        List<User> users  = getAllUsers();
+        List<User> users = getAllUsers();
         String lastLocation = "";
-        for (User user: users){
-            lastLocation = user.getUserId() + ": " + "{longitude: " + user.getLastVisitedLocation().location.longitude+", latitude: "+ user.getLastVisitedLocation().location.latitude + "}";
+        for (User user : users) {
+            lastLocation = user.getUserId() + ": " + "{longitude: " + user.getLastVisitedLocation().location.longitude + ", latitude: " + user.getLastVisitedLocation().location.latitude + "}";
             lastLocations.add(lastLocation);
         }
         return lastLocations;
@@ -85,11 +87,41 @@ public class TourGuideService {
 //        return providers;
 //    }
 
+
     public VisitedLocation trackUserLocation(User user) {
         VisitedLocation visitedLocation = gpsUtil.getUserLocation(user.getUserId());
         user.addToVisitedLocations(visitedLocation);
         rewardsService.calculateRewards(user);
         return visitedLocation;
+    }
+
+    public void trackUserLocationMultiThread(List<User> userList) {
+
+        ExecutorService executorService = Executors.newFixedThreadPool(100);
+
+        List<Future<?>> listFuture = new ArrayList<>();
+
+        for (User user : userList) {
+            Future<?> future = executorService.submit(() -> {
+
+                VisitedLocation visitedLocation = gpsUtil.getUserLocation(user.getUserId());
+                user.addToVisitedLocations(visitedLocation);
+            });
+
+            listFuture.add(future);
+        }
+
+        listFuture.stream().forEach(futureResult -> {
+            try {
+                futureResult.get();
+            } catch (InterruptedException | ExecutionException e) {
+            }
+        });
+
+        executorService.shutdown();
+
+        rewardsService.calculateRewardsMultiThread(userList);
+
     }
 
 //    public List<String> getNearByAttractions(VisitedLocation visitedLocation, User user) {

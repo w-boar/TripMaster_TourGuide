@@ -1,6 +1,10 @@
 package tourGuide.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import org.springframework.stereotype.Service;
 
@@ -50,6 +54,45 @@ public class RewardsService {
 			}
 		}
 	}
+
+	public void calculateRewardsMultiThread(List<User> userList) {
+
+		ExecutorService executorService = Executors.newFixedThreadPool(500);
+
+		List<Attraction> attractions = gpsUtil.getAttractions();
+		List<Future<?>> listFuture = new ArrayList<>();
+
+		for(User user : userList) {
+			Future<?> future = executorService.submit( () -> {
+
+				for(Attraction attraction : attractions) {
+
+					if(user.getUserRewards().stream().noneMatch(r -> r.attraction.attractionName.equals(attraction.attractionName))) {
+
+						VisitedLocation lastVisitedLocation = user.getVisitedLocations().get(user.getVisitedLocations().size()-1);
+						if(nearAttraction(lastVisitedLocation, attraction)) {
+							try {
+								user.addUserReward(new UserReward(lastVisitedLocation, attraction, getRewardPoints(attraction, user)));
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					}
+				}
+			});
+			listFuture.add(future);
+		}
+
+		listFuture.stream().forEach(f->{
+			try {
+				f.get();
+			} catch (Exception e) {
+
+				e.printStackTrace();
+			}
+		});
+		executorService.shutdown();
+	}
 	
 	public boolean isWithinAttractionProximity(Attraction attraction, Location location) {
 		return getDistance(attraction, location) > attractionProximityRange ? false : true;
@@ -59,7 +102,7 @@ public class RewardsService {
 		return getDistance(attraction, visitedLocation.location) > proximityBuffer ? false : true;
 	}
 	
-	private int getRewardPoints(Attraction attraction, User user) {
+	public int getRewardPoints(Attraction attraction, User user) {
 		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId, user.getUserId());
 	}
 	
