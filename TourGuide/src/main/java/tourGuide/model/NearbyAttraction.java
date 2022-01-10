@@ -3,24 +3,23 @@ package tourGuide.model;
 import gpsUtil.location.Attraction;
 import gpsUtil.location.Location;
 import gpsUtil.location.VisitedLocation;
-import rewardCentral.RewardCentral;
-import tourGuide.service.RewardsService;
 
 public class NearbyAttraction extends Location {
     private Attraction attraction;
     private User user;
     private VisitedLocation visitedLocation;
-    private RewardsService rewardsService;
-    private RewardCentral rewardCentral;
+    private double distance;
+    private int rewardPoints;
 
-    public NearbyAttraction(double latitude, double longitude, Attraction attraction, User user, VisitedLocation visitedLocation, RewardsService rewardsService, RewardCentral rewardCentral) {
+    public NearbyAttraction(double latitude, double longitude, Attraction attraction, User user, VisitedLocation visitedLocation, double distance, int rewardPoints) {
         super(latitude, longitude);
         this.attraction = attraction;
         this.user = user;
-        this.visitedLocation= visitedLocation;
-        this.rewardsService = rewardsService;
-        this.rewardCentral = rewardCentral;
+        this.visitedLocation = visitedLocation;
+        this.distance = distance;
+        this.rewardPoints = rewardPoints;
     }
+
 
     @Override
     public String toString() {
@@ -30,8 +29,8 @@ public class NearbyAttraction extends Location {
                 ", longitude=" + longitude +
                 ", user latitude=" + visitedLocation.location.latitude+
                 ", user longitude=" + visitedLocation.location.longitude+
-                ", distance=" + rewardsService.getDistance(visitedLocation.location, attraction)+
-                " miles, reward points =" + rewardCentral.getAttractionRewardPoints(attraction.attractionId, user.getUserId()) +
+                ", distance=" + distance+
+                " miles, reward points =" + rewardPoints +
                 '}';
     }
 }
