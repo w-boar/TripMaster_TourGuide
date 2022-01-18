@@ -5,38 +5,37 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/GpsUtils" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/gpsUtil" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/GpsUtils" />
+            <option value="$PROJECT_DIR$/gpsUtil" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/RewardCentral" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/rewardCentral" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/RewardCentral" />
+            <option value="$PROJECT_DIR$/rewardCentral" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/TourGuide" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/tourGuide" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/TourGuide" />
-            <option value="$PROJECT_DIR$/TourGuide/User" />
+            <option value="$PROJECT_DIR$/tourGuide" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/TripPricer" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/tripPricer" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/TripPricer" />
+            <option value="$PROJECT_DIR$/tripPricer" />
           </set>
         </option>
       </GradleProjectSettings>
