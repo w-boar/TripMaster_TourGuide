@@ -1,4 +1,4 @@
-package tourGuide.proxies.gpsUtil;//package tourGuide.proxies.gpsUtil;
+package tourGuide.proxies.gpsUtil;
 
 public class Location {
     public final double longitude;
@@ -8,8 +8,6 @@ public class Location {
         this.latitude = latitude;
         this.longitude = longitude;
     }
-
-
 
     public double getLongitude() {
         return longitude;

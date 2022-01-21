@@ -18,9 +18,9 @@ public class RewardCentralController {
     }
 
     @GetMapping("/getAttractionRewardPoints")
-    public String getAttractionRewardPoints(@RequestParam() UUID attractionId, @RequestParam UUID userId) {
+    public int getAttractionRewardPoints(@RequestParam() UUID attractionId, @RequestParam UUID userId) {
 
-        return  JsonStream.serialize(rewardCentralService.getAttractionRewardPoints(attractionId, userId));
+        return  rewardCentralService.getAttractionRewardPoints(attractionId, userId);
     }
 
 }

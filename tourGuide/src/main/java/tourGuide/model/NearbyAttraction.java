@@ -25,12 +25,12 @@ public class NearbyAttraction extends Location {
     @Override
     public String toString() {
         return "NearbyAttraction{" +
-                "attractionName='" + attraction.getAttractionName()+ '\'' +
+                "attractionName='" + attraction.attractionName + '\'' +
                 ", latitude=" + attraction.getLatitude() +
                 ", longitude=" + attraction.getLongitude() +
-                ", user latitude=" + visitedLocation.getLocation().getLatitude()+
-                ", user longitude=" + visitedLocation.getLocation().getLongitude()+
-                ", distance=" + distance+
+                ", user latitude=" + visitedLocation.location.getLatitude() +
+                ", user longitude=" + visitedLocation.location.getLongitude() +
+                ", distance=" + distance +
                 " miles, reward points =" + rewardPoints +
                 '}';
     }

@@ -24,6 +24,7 @@
       <module name="TourGuide.User.main" target="1.8" />
       <module name="TourGuide.User.test" target="1.8" />
       <module name="TourGuide2" target="1.8" />
+      <module name="tourGuide3" target="1.8" />
       <module name="TripPricer" target="1.8" />
       <module name="TripPricer.main" target="1.8" />
       <module name="TripPricer.test" target="1.8" />

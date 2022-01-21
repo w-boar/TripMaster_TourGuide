@@ -1,7 +1,6 @@
 package tourGuide.helper;
 
-//import gpsUtil.location.Location;
-//import gpsUtil.location.VisitedLocation;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tourGuide.model.User;
@@ -45,7 +44,7 @@ public class InternalUsers {
     }
 
     private void generateUserLocationHistory(User user) {
-        IntStream.range(0, 3).forEach(i -> {
+        IntStream.range(0, 1).forEach(i -> {
             user.addToVisitedLocations(new VisitedLocation(user.getUserId(), new Location(generateRandomLatitude(), generateRandomLongitude()), getRandomTime()));
         });
     }
