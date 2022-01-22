@@ -43,10 +43,6 @@ public class LocalisationService {
         this.proximityBuffer = proximityBuffer;
     }
 
-    public void setDefaultProximityBuffer() {
-        proximityBuffer = defaultProximityBuffer;
-    }
-
     public boolean isWithinAttractionProximity(Attraction attraction, Location location) {
         return getDistance(attraction, location) > attractionProximityRange ? false : true;
     }
@@ -72,6 +68,14 @@ public class LocalisationService {
         double statuteMiles = STATUTE_MILES_PER_NAUTICAL_MILE * nauticalMiles;
         return statuteMiles;
     }
+
+//    public void setDefaultProximityBuffer() {
+//        proximityBuffer = defaultProximityBuffer;
+//    }
+
+//    public List<Attraction> getAttractions() {
+//        return gpsUtil.getAttractions();
+//    }
 //===================================================================================
 
     public VisitedLocation getUserLocation(User user) {
@@ -79,10 +83,6 @@ public class LocalisationService {
                 user.getLastVisitedLocation() :
                 trackUserLocation(user);
         return visitedLocation;
-    }
-
-    public List<Attraction> getAttractions() {
-        return gpsUtil.getAttractions();
     }
 
     public TreeMap<Double, Attraction> mapAttractionsWithDistances(VisitedLocation visitedLocation, User user) {
@@ -141,6 +141,7 @@ public class LocalisationService {
             try {
                 futureResult.get();
             } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();;
             }
         });
 

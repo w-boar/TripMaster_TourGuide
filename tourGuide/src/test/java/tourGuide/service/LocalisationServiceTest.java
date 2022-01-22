@@ -99,6 +99,19 @@ public class LocalisationServiceTest {
     }
 
     @Test
+    public void getUserLocation()  {
+        gpsUtil = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.proxies.gpsUtil.GpsUtil.class, TestProperties.gpsUtilSocket);
+        rewardCentral = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.proxies.rewardCentral.RewardCentral.class, TestProperties.rewardCentralSocket);
+        localisationService = new LocalisationService(gpsUtil, rewardCentral);
+        userService = new UserService(gpsUtil, rewardCentral);
+
+        User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
+        VisitedLocation visitedLocation = localisationService.trackUserLocation(user);
+        userService.tracker.stopTracking();
+        assertTrue(visitedLocation.userId.equals(user.getUserId()));
+    }
+
+    @Test
     public void shouldGetNearbyAttractions() {
         gpsUtil = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.proxies.gpsUtil.GpsUtil.class, TestProperties.gpsUtilSocket);
         rewardCentral = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.proxies.rewardCentral.RewardCentral.class, TestProperties.rewardCentralSocket);

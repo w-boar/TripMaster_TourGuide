@@ -18,11 +18,6 @@ public class GpsUtilController {
         this.gpsUtilService = gpsUtilService;
     }
 
-    @GetMapping(value = "/getGpsUtilTested")
-    public String getGpsUtilTested() {
-        return gpsUtilService.getGpsUtilTested();
-    }
-
     @GetMapping(value = "/getUserLocation")
     public VisitedLocation getUserLocation(@RequestParam("userId") UUID userId) {
         return gpsUtilService.getUserLocation(userId);
@@ -32,5 +27,12 @@ public class GpsUtilController {
     public List<Attraction> getAttractions(){
         return gpsUtilService.getAttractions();
     }
+
+//    @GetMapping(value = "/getGpsUtilTested")
+//    public String getGpsUtilTested() {
+//        return gpsUtilService.getGpsUtilTested();
+//    }
+
+
 
 }

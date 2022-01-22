@@ -18,8 +18,12 @@ public class TripPricerService {
         this.tripPricer = tripPricer;
     }
 
+public int getCumulativeRewardPoints(User user) {
+    return user.getUserRewards().stream().mapToInt(i -> i.getRewardPoints()).sum();
+}
+
     public List<Provider> getTripDeals(User user) {
-        int cumulativeRewardPoints = user.getUserRewards().stream().mapToInt(i -> i.getRewardPoints()).sum();
+        int cumulativeRewardPoints = getCumulativeRewardPoints(user);
         List<Provider> providers = tripPricer.getPrice(tripPricerApiKey, user.getUserId(), user.getUserPreferences().getNumberOfAdults(),
                 user.getUserPreferences().getNumberOfChildren(), user.getUserPreferences().getTripDuration(), cumulativeRewardPoints);
         user.setTripDeals(providers);

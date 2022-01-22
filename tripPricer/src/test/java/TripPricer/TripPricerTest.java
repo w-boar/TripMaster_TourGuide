@@ -13,12 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class TripPricerTest {
 
     private TripPricerService tripPricerService = new TripPricerService();
-    private TripPricerController tripPricerController= new TripPricerController(tripPricerService);
-
+    private TripPricerController tripPricerController = new TripPricerController(tripPricerService);
 
 
     @Test
-    public void shouldReturnListOfProviders(){
+    public void shouldReturnListOfProviders() {
         int tripDuration = 3;
         int numberOfAdults = 2;
         int numberOfChildren = 0;
@@ -31,7 +30,7 @@ public class TripPricerTest {
     }
 
     @Test
-    public void shouldReturnARandoomProviderName() {
+    public void shouldReturnARandomProviderName() {
         String provider = tripPricerController.getProviderName("", 0);
 
         assertNotNull(provider);

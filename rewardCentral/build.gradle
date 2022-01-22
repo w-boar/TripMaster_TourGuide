@@ -1,7 +1,9 @@
 plugins {
-	id 'org.springframework.boot' version '2.6.2'
+	id 'org.springframework.boot' version '2.6.3'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'jacoco'
+	id 'com.palantir.docker' version '0.32.0'
 }
 
 group = 'rewardCentral'
@@ -32,9 +34,11 @@ dependencies {
 
 
 	implementation files('libs/RewardCentral.jar')
+	implementation 'junit:junit:4.13.2'
 
-	testImplementation 'junit:junit:4.12'
-
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.2'
 }
 
 dependencyManagement {
@@ -45,4 +49,20 @@ dependencyManagement {
 
 test {
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+jacocoTestReport {
+	dependsOn test // tests are required to run before generating the report
+}
+
+jacoco {
+	toolVersion = "0.8.7"
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled false
+		csv.enabled false
+		html.destination file("${buildDir}/jacocoHtml")
+	}
 }

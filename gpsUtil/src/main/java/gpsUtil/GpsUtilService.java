@@ -12,10 +12,6 @@ public class GpsUtilService {
 
     private GpsUtil gpsUtil = new GpsUtil();
 
-    public String getGpsUtilTested() {
-        return "gpsUtilTest";
-    }
-
     public List<Attraction> getAttractions() {
         return gpsUtil.getAttractions();
     }
@@ -23,4 +19,9 @@ public class GpsUtilService {
     public VisitedLocation getUserLocation(UUID userId) {
         return gpsUtil.getUserLocation(userId);
     }
+
+//    public String getGpsUtilTested() {
+//        return "gpsUtilTest";
+//    }
+
 }

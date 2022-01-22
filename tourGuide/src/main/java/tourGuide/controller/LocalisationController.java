@@ -30,19 +30,7 @@ public class LocalisationController {
         return JsonStream.serialize(visitedLocation.location);
     }
 
-    @GetMapping("/getAttractions")
-    public List<Attraction> getAttractions() {
-        return localisationService.getAttractions();
-    }
-
-    @GetMapping("/mapAttractions")
-    public TreeMap<Double, Attraction> getAttractionsWithDistance(@RequestParam String userName) {
-
-        return localisationService.mapAttractionsWithDistances(localisationService.getUserLocation(userService.getUser(userName)), userService.getUser(userName));
-    }
-
-
-//    Get the closest five tourist attractions to the user - no matter how far away they are.
+    //    Get the closest five tourist attractions to the user - no matter how far away they are.
 //     Return a new JSON object that contains:
 //     Name of Tourist attraction,
 //     Tourist attractions lat/long,
@@ -57,4 +45,19 @@ public class LocalisationController {
         VisitedLocation visitedLocation = localisationService.getUserLocation(user);
         return JsonStream.serialize(localisationService.getNearByAttractions(visitedLocation, user));
     }
+
+//======  Tools ===================================================================================
+//    @GetMapping("/getAttractions")
+//    public List<Attraction> getAttractions() {
+//        return localisationService.getAttractions();
+//    }
+//
+//    @GetMapping("/mapAttractions")
+//    public TreeMap<Double, Attraction> getAttractionsWithDistance(@RequestParam String userName) {
+//
+//        return localisationService.mapAttractionsWithDistances(localisationService.getUserLocation(userService.getUser(userName)), userService.getUser(userName));
+//    }
+//=================================================================================================
+
+
 }

@@ -18,6 +18,10 @@ public class UserController {
         return "Greetings from TourGuide!";
     }
 
+    @RequestMapping("/getUser")
+    public User getUser(String userName) {
+        return userService.getUser(userName);
+    }
 
 //     Get a list of every user's most recent location as JSON
 //    - Note:
@@ -28,16 +32,10 @@ public class UserController {
 //            "019b04a9-067a-4c76-8817-ee75088c3822": {"longitude":-48.188821,"latitude":74.84371}
 //            ...
 //         }
-     
+
     @RequestMapping("/getAllCurrentLocations")
     public String getAllCurrentLocations() {
         return JsonStream.serialize(userService.getAllCurrentLocations());
     }
-
-    @RequestMapping("/getUser")
-    public User getUser(String userName) {
-        return userService.getUser(userName);
-    }
-
 
 }

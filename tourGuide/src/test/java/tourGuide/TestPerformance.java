@@ -71,6 +71,15 @@ public class TestPerformance {
         assertTrue(TimeUnit.MINUTES.toSeconds(15) >= TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
     }
 
+
+//    @Test
+//    public void exp3_should_throw_exception_when_calculating_square_root_of_negative_number(){
+//        catchException(calculator).squareRoot(-10);
+//
+//        assert caughtException() instanceof IllegalArgumentException;
+//    }
+
+
     @Test
     public void highVolumeGetRewards() {
         gpsUtil = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.proxies.gpsUtil.GpsUtil.class, TestProperties.gpsUtilSocket);
