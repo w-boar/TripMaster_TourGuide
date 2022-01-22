@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="demo" target="1.8" />
+      <module name="demo.main" target="1.8" />
+      <module name="demo.test" target="1.8" />
+      <module name="eureka.server" target="1.8" />
+      <module name="GpsUtil" target="1.8" />
+      <module name="GpsUtil.main" target="1.8" />
+      <module name="GpsUtil.test" target="1.8" />
+      <module name="gpsUtil2" target="1.8" />
+      <module name="GpsUtils.main" target="1.8" />
+      <module name="GpsUtils.test" target="1.8" />
+      <module name="RewardCentral" target="1.8" />
+      <module name="RewardCentral.main" target="1.8" />
+      <module name="RewardCentral.test" target="1.8" />
+      <module name="rewardCentral2" target="1.8" />
+      <module name="tourGuide.eureka" target="1.8" />
+      <module name="tourGuide.eureka.main" target="1.8" />
+      <module name="tourGuide.eureka.test" target="1.8" />
+      <module name="TourGuide.main" target="1.8" />
+      <module name="TourGuide.test" target="1.8" />
+      <module name="TourGuide.User.main" target="1.8" />
+      <module name="TourGuide.User.test" target="1.8" />
+      <module name="TourGuide2" target="1.8" />
+      <module name="tourGuide3" target="1.8" />
+      <module name="TripPricer" target="1.8" />
+      <module name="TripPricer.main" target="1.8" />
+      <module name="TripPricer.test" target="1.8" />
+      <module name="tripPricer2" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

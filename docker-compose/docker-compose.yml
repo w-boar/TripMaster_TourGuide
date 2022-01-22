@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  eureka:
+    build: eureka/
+    ports:
+      - "9100:9100"
+    container_name: eureka
+  tourguide:
+    build: tourguide/
+    ports:
+      - "8080:8080"
+    container_name: tourguide
+  gpsutil:
+        build: gpsutil/
+        ports:
+          - "8081:8081"
+        container_name: gpsutil
+  rewardcentral:
+        build: rewardcentral/
+        ports:
+          - "8082:8082"
+        container_name: rewardcentral
+  trippricer:
+        build: trippricer/
+        restart: always
+        ports:
+          - "8083:8083"
+        container_name: trippricer
