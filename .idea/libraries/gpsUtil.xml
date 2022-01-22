@@ -1,11 +1,11 @@
 <component name="libraryTable">
-  <library name="gpsUtil">
+  <library name="gpsUtil (6)">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/TourGuide/libs/gpsUtil.jar!/" />
+      <root url="jar://$PROJECT_DIR$/gpsUtil/libs/gpsUtil.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/TourGuide/libs/gpsUtil.jar!/" />
+      <root url="jar://$PROJECT_DIR$/gpsUtil/libs/gpsUtil.jar!/" />
     </SOURCES>
   </library>
 </component>

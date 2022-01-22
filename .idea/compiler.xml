@@ -5,7 +5,12 @@
       <module name="demo" target="1.8" />
       <module name="demo.main" target="1.8" />
       <module name="demo.test" target="1.8" />
+      <module name="eureka" target="1.8" />
+      <module name="eureka.main" target="1.8" />
       <module name="eureka.server" target="1.8" />
+      <module name="eureka.server.main" target="1.8" />
+      <module name="eureka.server.test" target="1.8" />
+      <module name="eureka.test" target="1.8" />
       <module name="GpsUtil" target="1.8" />
       <module name="GpsUtil.main" target="1.8" />
       <module name="GpsUtil.test" target="1.8" />
