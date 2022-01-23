@@ -1,0 +1,37 @@
+version: '3'
+services:
+  tourguide:
+    build: tourguide/
+    ports:
+      - "8080:8080"
+    container_name: "tourguide"
+    networks:
+      - tourguidenetwork
+    restart: always
+  gpsutil:
+        build: gpsutil/
+        ports:
+          - "8081:8081"
+        container_name: "gpsutil"
+        networks:
+          - tourguidenetwork
+        restart: always
+  rewardcentral:
+        build: rewardcentral/
+        ports:
+          - "8082:8082"
+        container_name: "rewardcentral"
+        networks:
+          - tourguidenetwork
+        restart: always
+  trippricer:
+        build: trippricer/
+        ports:
+          - "8083:8083"
+        container_name: "trippricer"
+        networks:
+          - tourguidenetwork
+        restart: always
+networks:
+  tourguidenetwork:
+
