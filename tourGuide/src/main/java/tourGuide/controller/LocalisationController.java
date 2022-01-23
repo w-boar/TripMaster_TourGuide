@@ -14,6 +14,9 @@ import tourGuide.service.UserService;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * The type Localisation controller.
+ */
 @RestController
 public class LocalisationController {
 
@@ -23,7 +26,12 @@ public class LocalisationController {
     @Autowired
     private LocalisationService localisationService;
 
-
+    /**
+     * Gets location
+     *
+     * @param userName
+     * @return location description
+     */
     @GetMapping("/getLocation")
     public String getLocation(@RequestParam String userName) {
         VisitedLocation visitedLocation = localisationService.getUserLocation(userService.getUser(userName));
@@ -39,11 +47,17 @@ public class LocalisationController {
 //     The reward points for visiting each Attraction.
 //     Note: Attraction reward points can be gathered from RewardsCentral
 
+    /**
+     * Gets nearby attractions.
+     *
+     * @param userName
+     * @return the first 5 nearest attractions
+     */
     @GetMapping("/getNearbyAttractions")
     public String getNearbyAttractions(@RequestParam String userName) {
         User user = userService.getUser(userName);
         VisitedLocation visitedLocation = localisationService.getUserLocation(user);
-        return JsonStream.serialize(localisationService.getNearByAttractions(visitedLocation, user));
+        return JsonStream.serialize(localisationService.getNearByAttractions(user));
     }
 
 //======  Tools ===================================================================================

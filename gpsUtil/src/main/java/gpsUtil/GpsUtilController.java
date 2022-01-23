@@ -9,22 +9,41 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * The type GpsUtil controller.
+ */
 @RestController
 public class GpsUtilController {
 
     private GpsUtilService gpsUtilService;
 
+    /**
+     * Instantiates a new GpsUtilController
+     *
+     * @param gpsUtilService
+     */
     public GpsUtilController(GpsUtilService gpsUtilService) {
         this.gpsUtilService = gpsUtilService;
     }
 
+    /**
+     * Gets location.
+     *
+     * @param userId
+     * @return visited location
+     */
     @GetMapping(value = "/getUserLocation")
     public VisitedLocation getUserLocation(@RequestParam("userId") UUID userId) {
         return gpsUtilService.getUserLocation(userId);
     }
 
-    @GetMapping(value="/getAttractions")
-    public List<Attraction> getAttractions(){
+    /**
+     * Gets attractions.
+     *
+     * @return a list of all the attractions
+     */
+    @GetMapping(value = "/getAttractions")
+    public List<Attraction> getAttractions() {
         return gpsUtilService.getAttractions();
     }
 
@@ -32,7 +51,6 @@ public class GpsUtilController {
 //    public String getGpsUtilTested() {
 //        return gpsUtilService.getGpsUtilTested();
 //    }
-
 
 
 }

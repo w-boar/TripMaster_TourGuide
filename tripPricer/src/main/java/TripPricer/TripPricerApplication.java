@@ -2,13 +2,19 @@ package TripPricer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+/**
+ * The type  TripPricer microservice
+ */
 @SpringBootApplication
 public class TripPricerApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(TripPricerApplication.class, args);
-	}
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(TripPricerApplication.class, args);
+    }
 
 }

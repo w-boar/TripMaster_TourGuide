@@ -1,23 +1,39 @@
 package tourGuide.controller;
 
-import com.jsoniter.output.JsonStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import tourGuide.model.LastLocation;
 import tourGuide.model.User;
 import tourGuide.service.UserService;
 
+import java.util.List;
+
+/**
+ * The type User controller.
+ */
 @RestController
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
+    /**
+     * Index string.
+     *
+     * @return "Greetings from TourGuide!"
+     */
     @RequestMapping("/")
     public String index() {
         return "Greetings from TourGuide!";
     }
 
+    /**
+     * Gets user
+     *
+     * @param userName
+     * @return user
+     */
     @RequestMapping("/getUser")
     public User getUser(String userName) {
         return userService.getUser(userName);
@@ -32,10 +48,14 @@ public class UserController {
 //            "019b04a9-067a-4c76-8817-ee75088c3822": {"longitude":-48.188821,"latitude":74.84371}
 //            ...
 //         }
-
+    /**
+     * Gets a list of current location for all users
+     *
+     * @return
+     */
     @RequestMapping("/getAllCurrentLocations")
-    public String getAllCurrentLocations() {
-        return JsonStream.serialize(userService.getAllCurrentLocations());
+    public List<LastLocation> getAllCurrentLocations() {
+        return userService.getAllCurrentLocations();
     }
 
 }

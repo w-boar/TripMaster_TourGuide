@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import tourGuide.TestProperties;
 import tourGuide.helper.InternalTestHelper;
+import tourGuide.model.LastLocation;
 import tourGuide.model.User;
 import tourGuide.proxies.gpsUtil.GpsUtil;
 import tourGuide.proxies.gpsUtil.VisitedLocation;
@@ -15,8 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
@@ -112,14 +112,14 @@ GpsUtil gpsUtil = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.pr
 
 //		WHEN
 	User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
-	VisitedLocation visitedLocation = (VisitedLocation) localisationService.trackUserLocation(user);
-	userService.addUser(user);
-	List<String> expectedList = new ArrayList<String>();
-	expectedList.add(user.getUserId() + ": " + "{longitude: " + user.getLastVisitedLocation().location.getLongitude()+", latitude: "+ user.getLastVisitedLocation().location.getLatitude() + "}");
-	List<String> actualList = userService.getAllCurrentLocations();
+    userService.addUser(user);
+    VisitedLocation visitedLocation = localisationService.trackUserLocation(user);
+	LastLocation lastLoc = new LastLocation(user.getUserId(), visitedLocation.location);
+	List<LastLocation> actualList = userService.getAllCurrentLocations();
 	userService.tracker.stopTracking();
 //		THEN
-	assertEquals(expectedList, actualList);
+	assertEquals(lastLoc.getUserId(), actualList.get(0).getUserId());
+    assertEquals(lastLoc.getLastLocation(), actualList.get(0).getLastLocation());
 }
 //
 //	@Ignore // Not yet implemented
@@ -134,7 +134,7 @@ GpsUtil gpsUtil = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.pr
 		User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
 		VisitedLocation visitedLocation = localisationService.trackUserLocation(user);
 
-		List<String> attractions = localisationService.getNearByAttractions(visitedLocation, user);
+		List<String> attractions = localisationService.getNearByAttractions(user);
 
 		userService.tracker.stopTracking();
 

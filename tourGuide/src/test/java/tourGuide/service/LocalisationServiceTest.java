@@ -50,17 +50,6 @@ public class LocalisationServiceTest {
         assertTrue(userRewards.size() == 1);
     }
 
-
-    @Test
-    public void isWithinAttractionProximity() {
-        gpsUtil = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.proxies.gpsUtil.GpsUtil.class, TestProperties.gpsUtilSocket);
-        rewardCentral = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.proxies.rewardCentral.RewardCentral.class, TestProperties.rewardCentralSocket);
-        localisationService = new LocalisationService(gpsUtil, rewardCentral);
-        Attraction attraction = gpsUtil.getAttractions().get(0);
-        assertTrue(localisationService.isWithinAttractionProximity(attraction, attraction));
-    }
-
-    //	@Ignore // Needs fixed - can throw ConcurrentModificationException
     @Test
     public void nearAllAttractions() throws InterruptedException {
         gpsUtil = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.proxies.gpsUtil.GpsUtil.class, TestProperties.gpsUtilSocket);
@@ -95,7 +84,7 @@ public class LocalisationServiceTest {
         User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
         VisitedLocation visitedLocation = localisationService.trackUserLocation(user);
 
-        assertNotNull(localisationService.mapAttractionsWithDistances(visitedLocation, user));
+        assertNotNull(localisationService.mapAttractionsWithDistances(visitedLocation));
     }
 
     @Test
@@ -124,11 +113,21 @@ public class LocalisationServiceTest {
         User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
         VisitedLocation visitedLocation = localisationService.trackUserLocation(user);
 
-        List<String> attractions = localisationService.getNearByAttractions(visitedLocation, user);
+        List<String> attractions = localisationService.getNearByAttractions(user);
 
         userService.tracker.stopTracking();
 
         assertEquals(5, attractions.size());
     }
+
+    //    @Test
+//    public void isWithinAttractionProximity() {
+//        gpsUtil = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.proxies.gpsUtil.GpsUtil.class, TestProperties.gpsUtilSocket);
+//        rewardCentral = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.proxies.rewardCentral.RewardCentral.class, TestProperties.rewardCentralSocket);
+//        localisationService = new LocalisationService(gpsUtil, rewardCentral);
+//        Attraction attraction = gpsUtil.getAttractions().get(0);
+//        assertTrue(localisationService.isWithinAttractionProximity(attraction, attraction));
+//    }
+
 
 }
