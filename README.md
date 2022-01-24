@@ -5,7 +5,6 @@ SpringBoot application - Gradle - Microservices - Feign - Docker
 ---
 **Instructions**
 
----
 
 -*run with Docker:*<br>
 /TripMaster_TourGuide/docker-compose]$ docker-compose up <br>
@@ -17,6 +16,8 @@ run each module separately<br>
 <br>
 -*test with userName :* <br>
 "internalUser{n}"  with  0<n<99
+
+
 ---
 **Table of content**
 
