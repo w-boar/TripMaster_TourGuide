@@ -1,8 +1,8 @@
 package tourGuide.service;
 
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import tourGuide.helper.InternalUsers;
 import tourGuide.helper.Tracker;
@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @Service
 public class UserService {
 
-    private Logger logger = LoggerFactory.getLogger(UserService.class);
+    private static final Logger logger = LogManager.getLogger("tourGuide");
 
     private GpsUtil gpsUtil;
     private RewardCentral rewardCentral;
@@ -108,7 +108,7 @@ public class UserService {
     /**
      * Gets all user's current location
      *
-     * @return list of positions
+     * @return list of last positions
      */
     public List<LastLocation> getAllCurrentLocations() {
         List<LastLocation> lastLocations = new ArrayList<LastLocation>();

@@ -1,21 +1,22 @@
 package tourGuide.helper;
 
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import tourGuide.model.User;
 import tourGuide.proxies.gpsUtil.Location;
 import tourGuide.proxies.gpsUtil.VisitedLocation;
-import tourGuide.service.UserService;
-
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.*;
+import java.util.Date;
+import java.util.Map;
+import java.util.Random;
+import java.util.UUID;
 import java.util.stream.IntStream;
 
 public class InternalUsers {
-    private Logger logger = LoggerFactory.getLogger(UserService.class);
+    private static final Logger logger = LogManager.getLogger("tourGuide");
 
     /**********************************************************************************
      *
@@ -40,7 +41,7 @@ public class InternalUsers {
 
             internalUserMap.put(userName, user);
         });
-        logger.debug("Created " + InternalTestHelper.getInternalUserNumber() + " internal test users.");
+        logger.info("Created " + InternalTestHelper.getInternalUserNumber() + " internal test users.");
     }
 
     private void generateUserLocationHistory(User user) {

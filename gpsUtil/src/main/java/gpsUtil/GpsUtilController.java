@@ -2,6 +2,8 @@ package gpsUtil;
 
 import gpsUtil.location.Attraction;
 import gpsUtil.location.VisitedLocation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +16,7 @@ import java.util.UUID;
  */
 @RestController
 public class GpsUtilController {
-
+    private static final Logger logger = LogManager.getLogger("gpsUtil");
     private GpsUtilService gpsUtilService;
 
     /**
@@ -34,6 +36,7 @@ public class GpsUtilController {
      */
     @GetMapping(value = "/getUserLocation")
     public VisitedLocation getUserLocation(@RequestParam("userId") UUID userId) {
+        logger.info("REQUEST: /getUserLocation?userId=" + userId);
         return gpsUtilService.getUserLocation(userId);
     }
 
@@ -44,6 +47,7 @@ public class GpsUtilController {
      */
     @GetMapping(value = "/getAttractions")
     public List<Attraction> getAttractions() {
+        logger.info("REQUEST: /getAttractions");
         return gpsUtilService.getAttractions();
     }
 

@@ -38,7 +38,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void shouldAddUser() {
+    public void shouldAddUser()  {
         GpsUtil gpsUtil = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.proxies.gpsUtil.GpsUtil.class, TestProperties.gpsUtilSocket);
         RewardCentral rewardCentral = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.proxies.rewardCentral.RewardCentral.class, TestProperties.rewardCentralSocket);
         InternalTestHelper.setInternalUserNumber(0);
@@ -60,7 +60,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void shouldGetAllUsers() {
+    public void shouldGetAllUsers()  {
         GpsUtil gpsUtil = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.proxies.gpsUtil.GpsUtil.class, TestProperties.gpsUtilSocket);
         RewardCentral rewardCentral = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.proxies.rewardCentral.RewardCentral.class, TestProperties.rewardCentralSocket);
         InternalTestHelper.setInternalUserNumber(0);
@@ -102,7 +102,7 @@ public class UserServiceTest {
 	}
 
 @Test
-	public void shouldGetAllCurrentLocations(){
+	public void shouldGetAllCurrentLocations()  {
 //		GIVEN
 GpsUtil gpsUtil = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.proxies.gpsUtil.GpsUtil.class, TestProperties.gpsUtilSocket);
     RewardCentral rewardCentral = Feign.builder().decoder(new GsonDecoder()).target(tourGuide.proxies.rewardCentral.RewardCentral.class, TestProperties.rewardCentralSocket);

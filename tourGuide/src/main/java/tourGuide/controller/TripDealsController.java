@@ -1,6 +1,8 @@
 package tourGuide.controller;
 
 import com.jsoniter.output.JsonStream;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +19,7 @@ import java.util.List;
  */
 @RestController
 public class TripDealsController {
-
+    private static final Logger logger = LogManager.getLogger("tourGuide");
     private static final String tripPricerApiKey = "test-server-api-key";
 
     @Autowired
@@ -28,6 +30,7 @@ public class TripDealsController {
 
     @RequestMapping("/getRewards")
     public String getRewards(@RequestParam String userName) {
+        logger.info("REQUEST: /getRewards?userName=" + userName);
         return JsonStream.serialize(userService.getUserRewards(userService.getUser(userName)));
     }
 
@@ -39,7 +42,8 @@ public class TripDealsController {
      * @return a list of offers
      */
     @RequestMapping("/getTripDeals")
-    public List<Provider> getTripDeals(@RequestParam String userName) {
+    public List<Provider> getTripDeals(@RequestParam String userName)  {
+        logger.info("REQUEST: /getTripDeals?userName=" + userName);
         return tripPricerService.getTripDeals(userService.getUser(userName));
     }
 
@@ -53,7 +57,8 @@ public class TripDealsController {
      * @return updated preferences
      */
     @RequestMapping("/preferences")
-    public String getUserPreferences(@RequestParam String userName, @RequestParam int numberOfAdults, @RequestParam int numberOfChildren, @RequestParam int tripDuration) {
+    public String getUserPreferences(@RequestParam String userName, @RequestParam int numberOfAdults, @RequestParam int numberOfChildren, @RequestParam int tripDuration)  {
+        logger.info("REQUEST: /preferences?userName=" + userName + "&numberOfAdults=" + numberOfAdults + "&numberOfChildren=" + numberOfChildren + "&tripDuration=" + tripDuration);
         User user = userService.getUser(userName);
         userService.getUser(userName).getUserPreferences().setNumberOfAdults(numberOfAdults);
         userService.getUser(userName).getUserPreferences().setNumberOfChildren(numberOfChildren);

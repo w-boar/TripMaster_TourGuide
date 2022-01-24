@@ -1,5 +1,7 @@
 package rewardCentral;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class RewardCentralApplication {
+    private static final Logger logger = LogManager.getLogger("rewardCentral");
     /**
      * The entry point of application.
      *
@@ -15,6 +18,7 @@ public class RewardCentralApplication {
      */
     public static void main(String[] args) {
         SpringApplication.run(RewardCentralApplication.class, args);
+        logger.info("rewardCentral initialized");
     }
 
 }

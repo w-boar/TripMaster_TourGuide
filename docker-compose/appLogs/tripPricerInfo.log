@@ -1,0 +1,16 @@
+[INFO ] 2022-01-24 17:39:45.161 [main] TripPricerApplication - Starting TripPricerApplication using Java 1.8.0_312 on fedora with PID 57859 (/home/alex/IdeaProjects/TripMaster_TourGuide/tripPricer/build/classes/java/main started by alex in /home/alex/IdeaProjects/TripMaster_TourGuide)
+[INFO ] 2022-01-24 17:39:45.166 [main] TripPricerApplication - No active profile set, falling back to default profiles: default
+[INFO ] 2022-01-24 17:39:45.541 [main] GenericScope - BeanFactory id=54ad094d-5ba0-3cd9-9acc-dbee69563df0
+[INFO ] 2022-01-24 17:39:45.705 [main] TomcatWebServer - Tomcat initialized with port(s): 8083 (http)
+[INFO ] 2022-01-24 17:39:45.759 [main] ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 548 ms
+[INFO ] 2022-01-24 17:39:46.058 [main] TomcatWebServer - Tomcat started on port(s): 8083 (http) with context path ''
+[INFO ] 2022-01-24 17:39:46.065 [main] TripPricerApplication - Started TripPricerApplication in 1.133 seconds (JVM running for 1.52)
+[INFO ] 2022-01-24 17:39:46.067 [main] tripPricer - tripPricer initialized
+[INFO ] 2022-01-24 17:40:03.933 [http-nio-8083-exec-1] DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2022-01-24 17:40:03.934 [http-nio-8083-exec-1] DispatcherServlet - Completed initialization in 0 ms
+[INFO ] 2022-01-24 17:40:03.964 [http-nio-8083-exec-1] tripPricer - REQUEST: /getPrice?apiKey=test-server-api-key&attractionId=3de09056-c420-4755-b0fb-422b3ef3225d&adults=1&children=0&nightsStay=1&rewardsPoints=0
+[INFO ] 2022-01-24 17:40:17.445 [http-nio-8083-exec-3] tripPricer - REQUEST: /getPrice?apiKey=test-server-api-key&attractionId=7a6042c3-71a9-4843-9d3f-b2fc79205ce6&adults=2&children=0&nightsStay=2&rewardsPoints=10
+[INFO ] 2022-01-24 17:40:19.860 [http-nio-8083-exec-4] tripPricer - REQUEST: /getPrice?apiKey=test-server-api-key&adults=2
+[INFO ] 2022-01-24 17:40:22.199 [http-nio-8083-exec-5] tripPricer - REQUEST: /getPrice?apiKey=test-server-api-key&adults=2
+[INFO ] 2022-01-24 17:54:22.906 [http-nio-8083-exec-8] tripPricer - REQUEST: /getPrice?apiKey=test-server-api-key&attractionId=880e7c4c-40b4-47c2-bcbb-b7ff78970319&adults=1&children=1&nightsStay=1&rewardsPoints=0
+[INFO ] 2022-01-24 17:54:43.422 [http-nio-8083-exec-9] tripPricer - REQUEST: /getPrice?apiKey=test-server-api-key&attractionId=690d2b2f-62b0-4151-83c0-408c0b342dae&adults=1&children=0&nightsStay=1&rewardsPoints=0

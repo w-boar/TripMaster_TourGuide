@@ -1,0 +1,20 @@
+[INFO ] 2022-01-24 17:39:31.651 [main] TourGuideApplication - Starting TourGuideApplication using Java 1.8.0_312 on fedora with PID 57667 (/home/alex/IdeaProjects/TripMaster_TourGuide/tourGuide/build/classes/java/main started by alex in /home/alex/IdeaProjects/TripMaster_TourGuide)
+[INFO ] 2022-01-24 17:39:31.657 [main] TourGuideApplication - No active profile set, falling back to default profiles: default
+[INFO ] 2022-01-24 17:39:32.166 [main] GenericScope - BeanFactory id=b01f84aa-4070-392b-8308-e639a0981b6a
+[INFO ] 2022-01-24 17:39:32.361 [main] TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[INFO ] 2022-01-24 17:39:32.412 [main] ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 726 ms
+[INFO ] 2022-01-24 17:39:32.624 [main] tourGuide - TestMode enabled
+[INFO ] 2022-01-24 17:39:32.650 [main] tourGuide - Created 100 internal test users.
+[INFO ] 2022-01-24 17:39:32.896 [main] EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+[INFO ] 2022-01-24 17:39:32.918 [main] TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[INFO ] 2022-01-24 17:39:32.928 [main] TourGuideApplication - Started TourGuideApplication in 1.526 seconds (JVM running for 1.906)
+[INFO ] 2022-01-24 17:39:32.933 [main] tourGuide - tourGuide initialized
+[INFO ] 2022-01-24 17:39:56.782 [http-nio-8080-exec-2] DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[INFO ] 2022-01-24 17:39:56.783 [http-nio-8080-exec-2] DispatcherServlet - Completed initialization in 1 ms
+[INFO ] 2022-01-24 17:39:56.804 [http-nio-8080-exec-2] tourGuide - REQUEST: /getRewards?userName=internalUser13
+[INFO ] 2022-01-24 17:39:58.799 [http-nio-8080-exec-3] tourGuide - REQUEST: /getAllCurrentLocations
+[INFO ] 2022-01-24 17:40:01.444 [http-nio-8080-exec-4] tourGuide - REQUEST: /getUser?userName=internalUser12
+[INFO ] 2022-01-24 17:40:03.883 [http-nio-8080-exec-5] tourGuide - REQUEST: /getTripDeals?userName=internalUser12
+[INFO ] 2022-01-24 17:40:06.082 [http-nio-8080-exec-6] tourGuide - REQUEST: /preferences?userName=internalUser12&numberOfAdults=2&numberOfChildren=7&tripDuration=4
+[INFO ] 2022-01-24 17:40:08.524 [http-nio-8080-exec-7] tourGuide - REQUEST: /getNearbyAttractions?userName=internalUser29
+[INFO ] 2022-01-24 17:40:14.094 [http-nio-8080-exec-8] tourGuide - REQUEST: /getLocation?userName=internalUser12

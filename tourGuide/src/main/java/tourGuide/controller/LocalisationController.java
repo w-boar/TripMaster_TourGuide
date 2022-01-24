@@ -1,25 +1,25 @@
 package tourGuide.controller;
 
 import com.jsoniter.output.JsonStream;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import tourGuide.model.User;
-import tourGuide.proxies.gpsUtil.Attraction;
 import tourGuide.proxies.gpsUtil.VisitedLocation;
 import tourGuide.service.LocalisationService;
 import tourGuide.service.UserService;
 
 import java.util.List;
-import java.util.TreeMap;
 
 /**
  * The type Localisation controller.
  */
 @RestController
 public class LocalisationController {
-
+    private static final Logger logger = LogManager.getLogger("tourGuide");
 
     @Autowired
     private UserService userService;
@@ -35,6 +35,7 @@ public class LocalisationController {
     @GetMapping("/getLocation")
     public String getLocation(@RequestParam String userName) {
         VisitedLocation visitedLocation = localisationService.getUserLocation(userService.getUser(userName));
+        logger.info("REQUEST: /getLocation?userName=" + userName);
         return JsonStream.serialize(visitedLocation.location);
     }
 
@@ -54,10 +55,11 @@ public class LocalisationController {
      * @return the first 5 nearest attractions
      */
     @GetMapping("/getNearbyAttractions")
-    public String getNearbyAttractions(@RequestParam String userName) {
+    public List<String> getNearbyAttractions(@RequestParam String userName){
         User user = userService.getUser(userName);
         VisitedLocation visitedLocation = localisationService.getUserLocation(user);
-        return JsonStream.serialize(localisationService.getNearByAttractions(user));
+        logger.info("REQUEST: /getNearbyAttractions?userName=" + userName);
+        return localisationService.getNearByAttractions(user);
     }
 
 //======  Tools ===================================================================================
