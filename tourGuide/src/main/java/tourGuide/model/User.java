@@ -8,7 +8,9 @@ import java.util.UUID;
 import tourGuide.proxies.gpsUtil.VisitedLocation;
 import tourGuide.proxies.tripPricer.Provider;
 
-
+/**
+ * The type User
+ */
 public class User {
     private final UUID userId;
     private final String userName;

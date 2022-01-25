@@ -5,6 +5,9 @@ import tourGuide.proxies.gpsUtil.Attraction;
 import tourGuide.proxies.gpsUtil.Location;
 import tourGuide.proxies.gpsUtil.VisitedLocation;
 
+/**
+ * The type NearbyAttraction
+ */
 public class NearbyAttraction extends Location {
     private Attraction attraction;
     private User user;

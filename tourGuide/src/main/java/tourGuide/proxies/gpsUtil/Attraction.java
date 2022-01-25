@@ -2,6 +2,9 @@ package tourGuide.proxies.gpsUtil;
 
 import java.util.UUID;
 
+/**
+ * The type Attraction - proxy
+ */
 public class Attraction extends Location {
     public final String attractionName;
     public final String city;

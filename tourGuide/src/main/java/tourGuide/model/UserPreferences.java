@@ -5,7 +5,9 @@ import javax.money.Monetary;
 
 import org.javamoney.moneta.Money;
 
-
+/**
+ * The type UserPreferences
+ */
 public class UserPreferences {
 
     private int attractionProximity = Integer.MAX_VALUE;

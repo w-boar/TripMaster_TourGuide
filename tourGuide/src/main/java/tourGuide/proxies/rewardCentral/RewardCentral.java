@@ -5,6 +5,9 @@ import feign.RequestLine;
 
 import java.util.UUID;
 
+/**
+ * The type RewardCentral - proxy
+ */
 public interface RewardCentral {
 
     @RequestLine("GET /getAttractionRewardPoints?attractionId={attractionId}&userId={userId}")

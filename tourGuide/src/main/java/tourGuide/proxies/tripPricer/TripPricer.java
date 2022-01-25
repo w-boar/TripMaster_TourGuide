@@ -7,7 +7,9 @@ import feign.RequestLine;
 import java.util.List;
 import java.util.UUID;
 
-
+/**
+ * The type TripPricer - proxy
+ */
 public interface TripPricer {
 
     @RequestLine("GET /getPrice?apiKey={apiKey}&attractionId={attractionId}&adults={adults}&children={children}&nightsStay={nightsStay}&rewardsPoints={rewardsPoints}")

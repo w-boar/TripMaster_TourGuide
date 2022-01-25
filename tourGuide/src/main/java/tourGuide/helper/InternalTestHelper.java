@@ -1,5 +1,8 @@
 package tourGuide.helper;
 
+/**
+ * The type InternalTestHelper - internal tests parameters
+ */
 public class InternalTestHelper {
     // Set this default up to 100,000 for testing
     private static int internalUserNumber = 100;
@@ -11,7 +14,7 @@ public class InternalTestHelper {
     public static int getInternalUserNumber() {
         return internalUserNumber;
     }
-    
+
 
 }
 

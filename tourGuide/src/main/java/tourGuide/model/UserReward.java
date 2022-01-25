@@ -3,7 +3,9 @@ package tourGuide.model;
 import tourGuide.proxies.gpsUtil.Attraction;
 import tourGuide.proxies.gpsUtil.VisitedLocation;
 
-
+/**
+ * The type UserReward
+ */
 public class UserReward {
 
     public final VisitedLocation visitedLocation;

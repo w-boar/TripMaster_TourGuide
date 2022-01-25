@@ -14,13 +14,16 @@ import tourGuide.service.LocalisationService;
 import tourGuide.service.UserService;
 import tourGuide.model.User;
 
+/**
+ * The type Tracker- internal tests tool
+ */
 public class Tracker extends Thread {
 
     @Autowired
     UserService userService;
     @Autowired
     LocalisationService localisationService;
-	
+
     private Logger logger = LoggerFactory.getLogger(Tracker.class);
     private static final long trackingPollingInterval = TimeUnit.MINUTES.toSeconds(5);
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();

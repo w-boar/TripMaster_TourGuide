@@ -4,10 +4,14 @@ import tourGuide.proxies.gpsUtil.Location;
 
 import java.util.UUID;
 
+/**
+ * The type LastLocation
+ */
 public class LastLocation {
 
-    private  UUID userId;
+    private UUID userId;
     private Location lastLocation;
+
 
     public LastLocation(UUID userId, Location lastLocation) {
         this.userId = userId;

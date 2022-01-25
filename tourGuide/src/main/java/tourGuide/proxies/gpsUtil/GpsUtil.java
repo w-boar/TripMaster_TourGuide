@@ -6,7 +6,9 @@ import feign.RequestLine;
 import java.util.List;
 import java.util.UUID;
 
-
+/**
+ * The type GpsUtil - proxy
+ */
 public interface GpsUtil {
 
     @RequestLine("GET /getUserLocation?userId={userId}")

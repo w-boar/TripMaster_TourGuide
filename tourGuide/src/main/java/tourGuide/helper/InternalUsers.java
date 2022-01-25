@@ -15,6 +15,10 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.stream.IntStream;
 
+
+/**
+ * The type InternalUsers - internal tests methods
+ */
 public class InternalUsers {
     private static final Logger logger = LogManager.getLogger("tourGuide");
 

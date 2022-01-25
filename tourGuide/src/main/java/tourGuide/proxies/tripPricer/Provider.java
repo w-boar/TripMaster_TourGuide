@@ -2,6 +2,9 @@ package tourGuide.proxies.tripPricer;
 
 import java.util.UUID;
 
+/**
+ * The type Provider - proxy
+ */
 public class Provider {
     public final String name;
     public final double price;
