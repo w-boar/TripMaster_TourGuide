@@ -8,7 +8,7 @@ import tourGuide.proxies.tripPricer.TripPricer;
 import java.util.List;
 
 /**
- * The type User service.
+ * The type TripPricer service.
  */
 @Service
 public class TripPricerService {
